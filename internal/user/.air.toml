@@ -1,0 +1,11 @@
+#:schema https://json.schemastore.org/any.json
+
+root = "."
+testdata_dir = "testdata"
+tmp_dir = "tmp"
+
+[build]
+args_bin = []
+bin = "tmp\\main.exe"
+cmd = "go build -o ./tmp/main.exe ./cmd"
+delay = 1000
