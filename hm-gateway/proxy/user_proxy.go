@@ -7,6 +7,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"github.com/h-mall/hm-gateway/internal/dto"
 	v1 "github.com/h-mall/proto-repo/api/user/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -40,4 +41,20 @@ func GetUserByID(ctx context.Context, c *app.RequestContext) {
 	}
 
 	c.JSON(consts.StatusOK, resp)
+}
+
+func GetUserPage(ctx context.Context, c*app.RequestContext)  {
+	var dto dto.PageDto
+
+	fmt.Println(c.BindAndValidate(&dto))
+
+	if err := c.BindQuery(&dto); err != nil {
+		c.JSON(400, map[string]string {
+			"error": err.Error(),
+		})
+		return
+	}
+
+	c.String(200, "success")
+
 }

@@ -13,6 +13,7 @@ func main() {
 	// h.Use(middleware.AuthMiddleware())
 
 	h.GET("/api/user/:id", proxy.GetUserByID)
+	h.GET("/api/users", proxy.GetUserPage)
 
 	log.Println("API Gateway is running on :8080")
 
