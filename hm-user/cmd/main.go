@@ -6,8 +6,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/h-mall/user/api"
-	"github.com/h-mall/user/internal/application"
+	"github.com/h-mall/hm-user/internal/application"
+	v1 "github.com/h-mall/proto-repo/api/user/v1"
 	"google.golang.org/grpc"
 )
 
@@ -31,7 +31,7 @@ func main() {
 
 	s := grpc.NewServer(grpc.UnaryInterceptor(unaryInterceptor))
 
-	api.RegisterUserServiceServer(s, application.NewUserService())
+	v1.RegisterUserServiceServer(s, application.NewUserService())
 
 	log.Println("User Service (gRPC) is running on :8081")
 

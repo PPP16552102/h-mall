@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/cloudwego/hertz/pkg/app/server"
-	"github.com/h-mall/api-gateway/internal/proxy"
+	"github.com/h-mall/hm-gateway/proxy"
 )
 
 func main() {

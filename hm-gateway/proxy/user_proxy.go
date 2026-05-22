@@ -7,7 +7,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	"github.com/h-mall/user/api"
+	v1 "github.com/h-mall/proto-repo/api/user/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -28,9 +28,9 @@ func GetUserByID(ctx context.Context, c *app.RequestContext) {
 
 	defer conn.Close()
 
-	client := api.NewUserServiceClient(conn)
+	client := v1.NewUserServiceClient(conn)
 
-	resp, err := client.GetUser(ctx, &api.GetUserRequest{
+	resp, err := client.GetUser(ctx, &v1.GetUserRequest{
 		Id: id,
 	})
 
